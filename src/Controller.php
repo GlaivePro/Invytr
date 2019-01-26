@@ -5,7 +5,7 @@ namespace GlaivePro\Invytr;
 use Illuminate\Http\Request;
 //use Illuminate\Foundation\Auth\User;
 
-class Invytr
+class Controller
 {
     /**
      * Display the password set view for the given token.
