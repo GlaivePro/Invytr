@@ -10,4 +10,6 @@
 |
 */
 
-Route::get('password/set/{token}', 'GlaivePro\Invytr\Controller@showSetForm');
+Route::get('password/set/{token}', 'GlaivePro\Invytr\Controller@showSetForm')
+     ->name('password.set')
+     ->middleware('web');
