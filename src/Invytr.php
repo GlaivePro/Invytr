@@ -26,7 +26,7 @@ class Invytr
      * @param  array  $credentials
      * @return string
      */
-    public function sendSetLink($email) 
+    public function sendSetLink($email)   //TODO: šeit reāli nevajag getuser un isnull, jo var šim padot jau gatavu useri
     {
 		$credentials = ['email' => $user->email];
 		
@@ -36,9 +36,9 @@ class Invytr
         if (is_null($user))
             return 'Invalid user';
 
-		$token = $this->tokens->create($user);
+		$token = $this->tokens->create($user);  // TODO: vajag $this->tokens būt pieejamam
 		
-		// User the method if the developer has specified one
+		// Use the method if the developer has specified one
         if(is_callable([$user, 'sendPasswordSetNotification']))
             $user->sendPasswordSetNotification($token);
         else
@@ -47,16 +47,17 @@ class Invytr
         return true;
     }
 
-    public static function resend(User $user) 
+    public static function resendInvitation(User $user) 
     {
-		// Send existing token
+		// TODO: send existing token... refactor sending out of this and sendSet aftwerwards?
     }
 
-    public static function revoke(User $user) 
+    public static function revokeInvitation(User $user) 
     {
-		// Delete sent but unused token
+		// TODO: delete sent but unused token, return true if fine
     }
 
+	// LIKELY we can drop the following two
     /**
      * Get the broker to be used during password setting.
      *

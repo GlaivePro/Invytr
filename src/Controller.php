@@ -28,4 +28,8 @@ class Controller
             ['token' => $token, 'email' => $request->email]
         );
     }
+	
+	// TODO: jāuztaisa apstrāde rekvestiem, kas atnāk ar sagatavoto linku
+	//       kaut kā middlewarē jāidentificē viņi un jāveic korekcijas, ja nepieciešamas
+	//       jāizdomā, ka konfigurējam expiration
 }
