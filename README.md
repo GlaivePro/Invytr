@@ -30,8 +30,17 @@ $ php artisan vendor:publish --provider="GlaivePro\Invytr\Provider" --tag=view
 
 ### Configuration
 
+
 ### Email
 
+Similar to Laravel's reset password functionality, you can create a `sendPasswordResetNotification` method on your user model.
+```php
+public function sendPasswordResetNotification($token)
+{
+	// By default we send this:
+	\Notification::send($this, new \GlaivePro\Invytr\Notifications\SetPassword($token));
+}
+```
 
 ### View
 
