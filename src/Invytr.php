@@ -44,7 +44,7 @@ class Invytr
         else
             Notification::send($user, new SetPassword($token));
 
-        return 0;
+        return true;
     }
 
     public static function resend(User $user) 
