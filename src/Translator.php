@@ -6,11 +6,11 @@ class Translator {
 
     public static function replaceResetLines()
     {
-        $line = 'Set password';
+        $line = 'Set Password';
 
-        if(app('translator')->has('Set password'))
-            $line = __('Set password');
+        if(app('translator')->has('Set Password'))
+            $line = __('Set Password');
 
-        app('translator')->addLines(['*.Reset password' => $line], app()->getLocale());
+        app('translator')->addLines(['*.Reset Password' => $line], app()->getLocale());
     }
 }
