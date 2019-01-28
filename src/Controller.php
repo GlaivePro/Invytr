@@ -33,11 +33,20 @@ class Controller
 	// TODO: jāuztaisa apstrāde rekvestiem, kas atnāk ar sagatavoto linku
 	//       kaut kā middlewarē jāidentificē viņi un jāveic korekcijas, ja nepieciešamas
 	//       jāizdomā, ka konfigurējam expiration
-	
+	//
 	//       ja taisām sesijā atzīmi, tad midlevārē varam noķert, palabot stringus u.c. stuff
 	//       un izdzēst atzīmi no sesijas, lai tālāk galvu nejauc
 	//       bet jāparedz iespēja arī custom apstrādei
 	//       tjipa ja ir metode kkur (probably tur pat, kur resetam?)
-	//       tad izsaucam App::make('Kontrolieris')->metode();
+	//       tad returnojam App::make('Kontrolieris')->metode();
 	//       citādi customizējam lietas, lai reset procedūra nostrādā mūsu vietā
+	//       un ejam default ceļu
+	//
+	//       varbūt arī šādi jāpadod conditionally izsaucamā metode
+	//       https://github.com/laravel/ideas/issues/385
+	//       nav skaidrs, kurš variants pareizāks
+	//
+	//       pirmajā nav skaidrs, kā nenobojāt sekojošās midlevāres
+	//       otrajā nav skaidrs, vai pacieš route cachingu
+	//       ja cache ir ok, tad ejam otro ceļu
 }
