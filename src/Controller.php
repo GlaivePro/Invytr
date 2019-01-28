@@ -16,6 +16,7 @@ class Controller
      */
     public function showSetForm(Request $request, $token)
     {
+	// TODO: šeit varētu sesijā izdarīt atzīmi, ka cilvēks iet setot nevis resetot?
         if(view()->exists('auth.passwords.set')) {
             return view('auth.passwords.set')->with(
                 ['token' => $token, 'email' => $request->email]
@@ -32,4 +33,11 @@ class Controller
 	// TODO: jāuztaisa apstrāde rekvestiem, kas atnāk ar sagatavoto linku
 	//       kaut kā middlewarē jāidentificē viņi un jāveic korekcijas, ja nepieciešamas
 	//       jāizdomā, ka konfigurējam expiration
+	
+	//       ja taisām sesijā atzīmi, tad midlevārē varam noķert, palabot stringus u.c. stuff
+	//       un izdzēst atzīmi no sesijas, lai tālāk galvu nejauc
+	//       bet jāparedz iespēja arī custom apstrādei
+	//       tjipa ja ir metode kkur (probably tur pat, kur resetam?)
+	//       tad izsaucam App::make('Kontrolieris')->metode();
+	//       citādi customizējam lietas, lai reset procedūra nostrādā mūsu vietā
 }
