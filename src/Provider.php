@@ -14,6 +14,10 @@ class Provider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
+
+        $router = $this->app['router'];
+        $router->pushMiddlewareToGroup('web', GlaivePro\Invytr\Http\Middleware::class);
+
 		// $this->publishes([
 		// 		__DIR__.'/config.php' => config_path('invytr.php'),
 		// ], 'config');
