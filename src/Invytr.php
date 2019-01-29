@@ -5,7 +5,7 @@ namespace GlaivePro\Invytr;
 use Password;
 use Notification;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Auth\Passwords\DatabaseTokenRepository;
+use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 
 class Invytr
 {   
