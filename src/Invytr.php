@@ -5,7 +5,7 @@ namespace GlaivePro\Invytr;
 use Password;
 use Notification;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Auth\Passwords\TokenRepositoryInterface;
+//use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 
 class Invytr
 {   
@@ -14,7 +14,7 @@ class Invytr
      *
      * @var \Illuminate\Auth\Passwords\TokenRepositoryInterface
      */
-    protected $tokens;
+    //protected $tokens;
 
     /**
      * Create a new invytr instance.
@@ -22,9 +22,9 @@ class Invytr
      * @param  \Illuminate\Auth\Passwords\TokenRepositoryInterface  $tokens
      * @return void
      */
-    public function __construct(TokenRepositoryInterface $tokens)
+    public function __construct()  //TokenRepositoryInterface $tokens
     {
-        $this->tokens = $tokens;
+        //$this->tokens = $tokens;
     }
 
     /**
@@ -48,7 +48,7 @@ class Invytr
      */
     protected function sendInvitation(User $user)
     {
-        $token = $this->tokens->create($user);
+        $token = $this->broker()->createToken($user);
 		
 		// Use the method if the developer has specified one
         if(is_callable([$user, 'sendPasswordSetNotification']))
@@ -67,6 +67,16 @@ class Invytr
      */
     public function revokeInvitation(User $user) 
     {
-        $this->tokens->delete($user);
+        $this->broker()->deleteToken($user);
+    }
+
+    /**
+     * Get the broker to be used during password setting.
+     *
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
+    protected function broker()
+    {
+        return Password::broker();
     }
 }
