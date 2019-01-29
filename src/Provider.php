@@ -2,6 +2,7 @@
 
 namespace GlaivePro\Invytr;
 
+use GlaivePro\Invytr\Http\Middleware;
 use Illuminate\Support\ServiceProvider;
 
 class Provider extends ServiceProvider
@@ -16,7 +17,7 @@ class Provider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
 
         $router = $this->app['router'];
-        $router->pushMiddlewareToGroup('web', GlaivePro\Invytr\Http\Middleware::class);
+        $router->pushMiddlewareToGroup('web', Middleware::class);
 
 		// $this->publishes([
 		// 		__DIR__.'/config.php' => config_path('invytr.php'),
@@ -30,6 +31,6 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->alias(Invytr::class, 'invytr');
+        //
     }
 }

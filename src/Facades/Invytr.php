@@ -2,6 +2,7 @@
 
 namespace GlaivePro\Invytr\Facades;
 
+use GlaivePro\Invytr\Invytr;
 use Illuminate\Support\Facades\Facade;
 
 class Invytr extends Facade
@@ -13,6 +14,6 @@ class Invytr extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'invytr';
+        return Invytr::class;
     }
 }
