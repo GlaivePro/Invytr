@@ -1,9 +1,9 @@
 <?php
 
-namespace GlaivePro\Invytr;
+namespace GlaivePro\Invytr\Helpers;
 
-class Translator {
-
+class Translator 
+{
     public static function replaceResetLines()
     {
         $line = 'Set Password';
