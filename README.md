@@ -30,12 +30,22 @@ The password resetting functionality should be set up as well (at least backend-
 
 ## Customization
 
-### Configuration
+### Invite expiration
 
-By default these invites will expire in the same time as password resets. The default of 60 minutes is usually not enough for invited users as they might not sign up immediately as their invite is sent.
+By default invite tokens will expire in the same time as password resets. The default of 60 minutes is usually not enough for invited users as they might not sign up immediately as their invite is sent.
 
-To increase the expiration time for invites, you should... tbd. 
-Publish our config? Or add key to config/auth.php ?
+To increase the expiration time for invites, you should add key `invites_expire` in `passwords.users` within `config/auth.php`. No you don't have to publish anything. Just add time in minutes like this:
+
+```php
+'passwords' => [
+	'users' => [
+		'provider' => 'users',
+		'table' => 'password_resets',
+		'expire' => 60,
+		'invites_expire' => 4320,  // This let's invites be valid for 3 days
+	],
+],
+```
 
 ### Email
 
