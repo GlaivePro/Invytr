@@ -16,7 +16,7 @@ class Controller
      */
     public function showSetForm(Request $request, $token)
     {
-	// TODO: šeit varētu sesijā izdarīt atzīmi, ka cilvēks iet setot nevis resetot?
+   // TODO: šeit varētu sesijā izdarīt atzīmi, ka cilvēks iet setot nevis resetot?
         if(view()->exists('auth.passwords.set')) {
             return view('auth.passwords.set')->with(
                 ['token' => $token, 'email' => $request->email]

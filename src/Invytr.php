@@ -51,7 +51,7 @@ class Invytr
         $token = $this->broker()->createToken($user);
 		
 		// Use the method if the developer has specified one
-        if(is_callable([$user, 'sendPasswordSetNotification']))
+        if(method_exists($user, 'sendPasswordSetNotification'))
             $user->sendPasswordSetNotification($token);
         else
             Notification::send($user, new SetPassword($token));
