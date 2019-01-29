@@ -26,6 +26,6 @@ class Provider extends ServiceProvider
      */
     public function register()
     {
-		//$this->mergeConfigFrom(__DIR__.'/config.php', 'invytr');
+        $this->app->alias(Invytr::class, 'invytr');
     }
 }
