@@ -1,10 +1,9 @@
 <?php
 
-namespace GlaivePro\Invytr;
+namespace GlaivePro\Invytr\Http;
     
 use Illuminate\Http\Request;
 use GlaivePro\Invytr\Helpers\Translator;
-//use Illuminate\Foundation\Auth\User;
 
 class Controller
 {

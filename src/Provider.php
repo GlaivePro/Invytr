@@ -13,7 +13,7 @@ class Provider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
 		// $this->publishes([
 		// 		__DIR__.'/config.php' => config_path('invytr.php'),
 		// ], 'config');
