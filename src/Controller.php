@@ -3,6 +3,7 @@
 namespace GlaivePro\Invytr;
     
 use Illuminate\Http\Request;
+use GlaivePro\Invytr\Helpers\Translator;
 //use Illuminate\Foundation\Auth\User;
 
 class Controller
