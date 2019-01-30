@@ -10,15 +10,18 @@ class Middleware
 {
     public function handle($request, Closure $next) 
     {
-        if($request->route() == 'password.update' && $request->session()->has('invytr')) {
-            if(config('auth.passwords.users.invites_expire')) {
-                config(['auth.passwords.users.expire' => config('auth.passwords.users.invites_expire')]);
-            }
+        if($request->route() != 'password.update' || !$request->session()->has('invytr')) 
+            return $next($request);
 
-            Translator::replaceResponseLines();
+        if(config('auth.passwords.users.invites_expire')) 
+            config(['auth.passwords.users.expire' => config('auth.passwords.users.invites_expire')]);
 
+        Translator::replaceResponseLines();
+
+        $response = $next($request);
+        if(!$request->session()->get('errors')) 
             $request->session()->forget('invytr');
-        }
-        return $next($request);
+
+        return $response;
     }
 }
