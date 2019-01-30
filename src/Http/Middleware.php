@@ -3,6 +3,7 @@
 namespace GlaivePro\Invytr\Http;
     
 use Closure;
+use GlaivePro\Invytr\Helpers\Translator;
 use Illuminate\Http\Request;
 
 class Middleware
@@ -13,6 +14,8 @@ class Middleware
             if(config('auth.passwords.users.invites_expire')) {
                 config(['auth.passwords.users.expire' => config('auth.passwords.users.invites_expire')]);
             }
+
+            Translator::replaceResponseLines();
 
             $request->session()->forget('invytr');
         }

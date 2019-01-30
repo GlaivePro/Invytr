@@ -17,14 +17,14 @@ class Controller
     public function showSetForm(Request $request, $token)
     {
         $request->session()->put('invytr', true);
-        
+
         if(view()->exists('auth.passwords.set')) {
             return view('auth.passwords.set')->with(
                 ['token' => $token, 'email' => $request->email]
             );
         }
 
-        Translator::replaceResetLines();
+        Translator::replaceFormLines();
 
         return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
