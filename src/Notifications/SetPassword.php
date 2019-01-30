@@ -55,10 +55,17 @@ class SetPassword extends Notification
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
+        $email = '';
+        if(is_string($notifiable))
+            $email = $notifiable;
+
+        if(is_object($notifiable) && isset($notifiable->email))
+            $email = $notifiable->email;
+
         return (new MailMessage)
-            ->subject(__('Set Password Notification'))
-            ->line(__('You are receiving this email because you need to set a password for your account.'))
-            ->action(__('Set Password'), url(config('app.url').route('password.set', $this->token, false)));
+            ->subject(__('Account created'))
+            ->line(__('An account for you has been created! Please set a password for your account!'))
+            ->action(__('Set Password'), url(config('app.url').route('password.set', ['token' => $this->token, 'email' => $email], false) ));
     }
 
     /**
