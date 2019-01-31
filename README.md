@@ -40,7 +40,7 @@ To increase the expiration time for invites, you should add key `invites_expire`
 ],
 ```
 
-## Custom texts and localization
+### Custom texts and localization
 
 You can customize/localize the strings in your JSON localization files (found in `resources/lang`).
 
