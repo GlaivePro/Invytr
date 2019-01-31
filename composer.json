@@ -13,27 +13,29 @@
             "email": "gatis@glaive.pro",
             "homepage": "https://github.com/Larzs",
             "role": "Developer"
-        },
-        {
-            "name": "Juris Evertovskis",
-            "email": "juris@glaive.pro",
-            "homepage": "https://github.com/tontonsb",
-            "role": "Developer"
         }
     ],
     "require": {
         "laravel/framework": ">=5.6"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "orchestra/testbench": "^3.7"
+    },
     "autoload": {
         "psr-4": {
-            "GlaivePro\\Invytr\\": "src"
+            "GlaivePro\\Invytr\\": "src",
+            "GlaivePro\\Invytr\\Tests\\": "tests"
         }
     },
     "extra": {
 		"laravel": {
 			"providers": [
 				"GlaivePro\\Invytr\\Provider"
-			]
+			],
+            "aliases": {
+                "Invytr": "GlaivePro\\Invytr\\Facades\\Invytr"
+            }
 		}
     }
 }
