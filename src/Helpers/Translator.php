@@ -5,7 +5,7 @@ namespace GlaivePro\Invytr\Helpers;
 class Translator 
 {
     private static $passwords = [
-        'password' => 'Passwords must match the confirmation.',
+        'password' => 'Passwords must be at least six characters and match the confirmation.',
         'reset' => 'Your password has been set!',
         'token' => 'This token is invalid.',
         'user' => "We can't find a user with that e-mail address.",

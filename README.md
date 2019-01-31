@@ -2,6 +2,8 @@
 
 Laravel package for sending invitations allowing new users to set their password.
 
+This package is mainly intended to be used together with Laravel's auth scaffolding. This package adds the ability to email new and existing users  a link to a page which will allow user to set up their password.
+
 ## Usage
 
 Install it:
@@ -14,27 +16,18 @@ You can now send invitations to your users. They will receive an email with a li
 
 ```php
 // $user must extend Illuminate\Foundation\Auth\User
-// Laravels \App\User does this by default
+// Laravel's \App\User does this by default
 
-\GlaivePro\Invytr\Invytr::invite($user);
+\Invytr::invite($user);
 ```
-
-If you are using the frontend scaffolding by Laravel (created by `php artisan make:auth`), the initial setup is done. The users setting the password will see a page that's almost the same as `/password/reset`.
-
-If you are not using the scaffolding provided by Laravel, you should make a view where the user can reset the password. Quickest way to do that is by asking us to create one like this:
-```bash
-$ php artisan vendor:publish --provider="GlaivePro\Invytr\Provider" --tag=view 
-```
-
-The password resetting functionality should be set up as well (at least backend-wise) as this tool will use many of the features, including the same table in the database.
 
 ## Customization
 
 ### Invite expiration
 
-By default invite tokens will expire in the same time as password resets. The default of 60 minutes is usually not enough for invited users as they might not sign up immediately as their invite is sent.
+By default invite tokens will expire in the same time as password resets. The default of 60 minutes is usually not enough for invited users as they might not sign up immediately after their invite is sent.
 
-To increase the expiration time for invites, you should add key `invites_expire` in `passwords.users` within `config/auth.php`. No you don't have to publish anything. Just add time in minutes like this:
+To increase the expiration time for invites, you should add key `invites_expire` in `passwords.users` within `config/auth.php`. No you don't have to publish anything. Just add the time in minutes like this:
 
 ```php
 'passwords' => [
@@ -46,6 +39,27 @@ To increase the expiration time for invites, you should add key `invites_expire`
 	],
 ],
 ```
+
+### Custom texts and localization
+
+You can customize/localize the strings in your JSON localization files (found in `resources/lang`).
+
+The invite email uses the following strings:
+
+- `Account created` as the subject.
+- `An account for you has been created! Please set a password for your account!` as the text.
+- `Set Password` as the action link.
+
+The password setting page uses only a single string:
+
+- `Set Password` as the title of the panel (instead of `Reset Password`).
+
+Responses to setting attempts uses these strings:
+
+- `Your password has been set!`
+- `Passwords must be at least six characters and match the confirmation.`
+- `This token is invalid.`
+- `We can't find a user with that e-mail address.`
 
 ### Email
 
@@ -60,24 +74,29 @@ public function sendPasswordResetNotification($token)
 
 ### View
 
-By default this package uses the same `auth.passwords.reset` view as the Laravel's reset functionality. If you don't use that functionality you should publish a template and modify it according to your needs.
-```bash
-$ php artisan vendor:publish --provider="GlaivePro\Invytr\Provider" --tag=view 
+By default this package uses the same `auth.passwords.reset` view as the Laravel's reset functionality. If you want more customization, make a `auth.passwords.set` view that includes all the same fields and posts the same request as does `auth.passwords.reset`.
+
+### Password setting and responses
+
+The resets are going through Laravel's `password.update` route and handled by the `reset` method on `App\Http\Controllers\Auth\ResetPasswordController`.
+
+If you want to customize the handling and/or responses, edit that method. You can tell apart setting and resetting requests by checking the session.
+
+```php
+// in the ResetPasswordController
+
+public function reset(Request $request)
+{
+	// something something
+	
+	if ($request->session()->has('invytr'))
+	{
+		// this is an invited user setting the password
+	}
+	
+	// something else
+}
 ```
-
-You can now modify the view in `auth.passwords.set`.
-
-
-## Localization
-
-You can localize the strings in your JSON localization files (found in `resources/lang`).
-
-By default this package uses only a handful of string. You should define translations or customize the following strings:
-
-- `Set Password` used as the title in the view and action button (link) in the email
-- `Set Password Notification` used as the email subject
-- `You are receiving this email because you need to set a password for your account.` - the email text
-
 
 ## License
 
