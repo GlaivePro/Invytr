@@ -4,7 +4,7 @@ namespace GlaivePro\Invytr\Tests;
 //use lasselehtinen\MyPackage\MyPackageServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-class TestCase extends OrchestraTestCase
+abstract class TestCase extends OrchestraTestCase
 {
     /**
      * Load package service provider
