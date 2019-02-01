@@ -13,6 +13,12 @@
             "email": "gatis@glaive.pro",
             "homepage": "https://github.com/Larzs",
             "role": "Developer"
+        },
+        {
+            "name": "Juris Evertovskis",
+            "email": "juris@glaive.pro",
+            "homepage": "https://github.com/tontonsb",
+            "role": "Developer"
         }
     ],
     "require": {
