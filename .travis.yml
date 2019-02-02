@@ -1,12 +1,28 @@
 dist: trusty
 language: php
 
-php:
-    - 7.2
+matrix:
+  include:
+    - php: 7.0
+      env: LARAVEL_VERSION=5.5.*
+    - php: 7.1
+      env: LARAVEL_VERSION=5.5.*
+    - php: 7.1
+      env: LARAVEL_VERSION=5.6.*
+    - php: 7.1
+      env: LARAVEL_VERSION=5.7.*
+    - php: 7.2
+      env: LARAVEL_VERSION=5.5.*
+    - php: 7.2
+      env: LARAVEL_VERSION=5.6.*
+    - php: 7.2
+      env: LARAVEL_VERSION=5.7.*
 
-before_script:
-    - travis_retry composer self-update
-    - travis_retry composer install --no-interaction --dev --prefer-dist --no-suggest
+before_install:
+  - composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
+
+install:
+  - composer update --prefer-source --no-interaction
 
 script:
   - ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
