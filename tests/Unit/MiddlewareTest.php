@@ -7,12 +7,5 @@ use GlaivePro\Invytr\Tests\TestCase;
 
 class MiddlewareTest extends TestCase
 {
-    /**
-     * Check that the multiply method returns correct result
-     * @return void
-     */
-    public function testTest()
-    {
-        $this->assertSame(1,1);
-    }
+
 }
