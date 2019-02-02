@@ -18,17 +18,13 @@ class Controller
     {
         $request->session()->put('invytr', true);
 
-        if(view()->exists('auth.passwords.set')) {
-            return view('auth.passwords.set')->with(
-                ['token' => $token, 'email' => $request->email]
-            );
+        if(\View::exists('auth.passwords.set')) {
+            return \View::make('auth.passwords.set', ['token' => $token, 'email' => $request->email]);
         }
 
         $translator = new Translator();
         $translator->replaceFormLines();
 
-        return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
+        return \View::make('auth.passwords.reset', ['token' => $token, 'email' => $request->email]);
     }
 }
