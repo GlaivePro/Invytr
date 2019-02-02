@@ -11,7 +11,7 @@ class Translator
         'user' => "We can't find a user with that e-mail address.",
     ];
 
-    public static function replaceFormLines()
+    public function replaceFormLines()
     {
         $line = 'Set Password';
 
@@ -21,7 +21,7 @@ class Translator
         app('translator')->addLines(['*.Reset Password' => $line], app()->getLocale());
     }
 
-    public static function replaceResponseLines()
+    public function replaceResponseLines()
     {
         foreach (self::$passwords as $key => $string) {
             if(app('translator')->has($string))

@@ -12,7 +12,8 @@ class TranslatorTest extends TestCase
      */
     public function testReplaceFormLines()
     {
-        Translator::replaceFormLines();
+        $translator = new Translator();
+        $translator->replaceFormLines();
 
         $this->assertSame(__('Reset Password'), 'Set Password');
     }
@@ -23,7 +24,8 @@ class TranslatorTest extends TestCase
      */
     public function testReplaceResponseLines()
     {
-        Translator::replaceResponseLines();
+        $translator = new Translator();
+        $translator->replaceResponseLines();
 
         $this->assertSame(__('passwords.password'), 'Passwords must be at least six characters and match the confirmation.');
         $this->assertSame(__('passwords.reset'), 'Your password has been set!');

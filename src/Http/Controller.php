@@ -24,7 +24,8 @@ class Controller
             );
         }
 
-        Translator::replaceFormLines();
+        $translator = new Translator();
+        $translator->replaceFormLines();
 
         return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]

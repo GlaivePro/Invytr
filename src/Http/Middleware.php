@@ -16,7 +16,8 @@ class Middleware
         if(config('auth.passwords.users.invites_expire')) 
             config(['auth.passwords.users.expire' => config('auth.passwords.users.invites_expire')]);
 
-        Translator::replaceResponseLines();
+        $translator = new Translator();
+        $translator->replaceResponseLines();
 
         $response = $next($request);
         if(!$request->session()->get('errors')) 
