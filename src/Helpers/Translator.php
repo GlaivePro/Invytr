@@ -4,7 +4,7 @@ namespace GlaivePro\Invytr\Helpers;
 
 class Translator 
 {
-    private static $passwords = [
+    private $passwords = [
         'password' => 'Passwords must be at least six characters and match the confirmation.',
         'reset' => 'Your password has been set!',
         'token' => 'This token is invalid.',
@@ -23,7 +23,7 @@ class Translator
 
     public function replaceResponseLines()
     {
-        foreach (self::$passwords as $key => $string) {
+        foreach ($this->passwords as $key => $string) {
             if(app('translator')->has($string))
                 $string = __($string);
 
