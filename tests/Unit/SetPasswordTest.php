@@ -5,7 +5,7 @@ namespace GlaivePro\Invytr\Tests\Unit;
 
 use GlaivePro\Invytr\Tests\TestCase;
 
-class MyPackageFunctionTest extends TestCase
+class SetPasswordTest extends TestCase
 {
     /**
      * Check that the multiply method returns correct result

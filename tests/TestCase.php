@@ -1,7 +1,9 @@
 <?php
 namespace GlaivePro\Invytr\Tests;
-//use lasselehtinen\MyPackage\MyPackageFacade;
-//use lasselehtinen\MyPackage\MyPackageServiceProvider;
+
+use GlaivePro\Invytr\Facades\Invytr;
+use GlaivePro\Invytr\Provider;
+
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -9,21 +11,22 @@ abstract class TestCase extends OrchestraTestCase
     /**
      * Load package service provider
      * @param  \Illuminate\Foundation\Application $app
-     * @return lasselehtinen\MyPackage\MyPackageServiceProvider
+     * @return GlaivePro\Invytr\Provider
      */
-    // protected function getPackageProviders($app)
-    // {
-    //     return [MyPackageServiceProvider::class];
-    // }
-    // *
-    //  * Load package alias
-    //  * @param  \Illuminate\Foundation\Application $app
-    //  * @return array
-     
-    // protected function getPackageAliases($app)
-    // {
-    //     return [
-    //         'MyPackage' => MyPackageFacade::class,
-    //     ];
-    // }
+    protected function getPackageProviders($app)
+    {
+        return [Provider::class];
+    }
+
+    /**
+     * Load package alias
+     * @param  \Illuminate\Foundation\Application $app
+     * @return array
+     */
+    protected function getPackageAliases($app)
+    {
+        return [
+            'Invytr' => Invytr::class,
+        ];
+    }
 }

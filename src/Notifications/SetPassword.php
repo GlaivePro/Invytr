@@ -1,6 +1,6 @@
 <?php
 
-namespace GlaivePro\Invytr;
+namespace GlaivePro\Invytr\Notifications;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;

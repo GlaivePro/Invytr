@@ -5,6 +5,7 @@ namespace GlaivePro\Invytr;
 use Password;
 use Notification;
 use Illuminate\Foundation\Auth\User;
+use GlaivePro\Invytr\Notifications\SetPassword;
 //use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 
 class Invytr
@@ -35,22 +36,9 @@ class Invytr
      */
     public function invite(User $user) 
     {
-        $response = $this->sendInvitation($user);
-
-        return $response;
-    }
-
-    /**
-     * Send a password set link to a user.
-     *
-     * @param  \Illuminate\Foundation\Auth\User  $user
-     * @return bool
-     */
-    protected function sendInvitation(User $user)
-    {
         $token = $this->broker()->createToken($user);
-		
-		// Use the method if the developer has specified one
+        
+        // Use the method if the developer has specified one
         if(method_exists($user, 'sendPasswordSetNotification'))
             $user->sendPasswordSetNotification($token);
         else
