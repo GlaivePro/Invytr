@@ -100,6 +100,24 @@ public function reset(Request $request)
 }
 ```
 
+## TODO
+
+Improve testing,
+- Thoroughly cover Invytr, Controller, Middleware with unit tests
+- Test the URL made in the notification
+- Create more feature tests.
+
+Improve code quality and consistency:
+- remove unused stuff that's already commented out
+- imports vs fully qualified class names
+- sort the imports
+- alignment when chaining... maybe use styleCI?
+- braces vs no braces for single line control structures
+- helpers vs facades vs ...
+- example: config() vs $request->session() vs \View::
+
+Maybe expand the scope to also provide something like a MustResetPasswordOnNextVisit trait? Or that's another package?
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
