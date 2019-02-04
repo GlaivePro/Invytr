@@ -104,11 +104,12 @@ public function reset(Request $request)
 
 Improve testing,
 - Thoroughly cover Invytr, Controller, Middleware with unit tests
-- Test the URL made in the notification
-- Create more feature tests.
+- Unit test the URL made in the notification
+- Create more feature tests. For the pw setting page.
 
 Improve code quality and consistency:
 - remove unused stuff that's already commented out
+- fix docblocks
 - imports vs fully qualified class names
 - sort the imports
 - alignment when chaining... maybe use styleCI?
@@ -121,7 +122,3 @@ Maybe expand the scope to also provide something like a MustResetPasswordOnNextV
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[link-packagist]: https://packagist.org/packages/GlaivePro/Invytr
-[link-author]: https://github.com/larzs
-[link-contributors]: ../../contributors
