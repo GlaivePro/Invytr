@@ -27,7 +27,6 @@ class TranslatorTest extends TestCase
         $translator = new Translator();
         $translator->replaceResponseLines();
 
-        $this->assertSame(__('passwords.password'), 'Passwords must be at least six characters and match the confirmation.');
         $this->assertSame(__('passwords.reset'), 'Your password has been set!');
         $this->assertSame(__('passwords.token'), 'This token is invalid.');
         $this->assertSame(__('passwords.user'), 'We can\'t find a user with that e-mail address.');
