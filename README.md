@@ -100,6 +100,10 @@ public function reset(Request $request)
 }
 ```
 
+## Warning
+
+Doing `php artisan auth:clear-resets` will also flush your invite tokens if they are expired according to `auth.passwords.users.expire` config value. Your `auth.passwords.users.invites_expire` config value will be ignored.
+
 ## TODO
 
 Improve testing,
