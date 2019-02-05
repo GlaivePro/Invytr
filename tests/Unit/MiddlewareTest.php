@@ -1,6 +1,10 @@
 <?php
 namespace GlaivePro\Invytr\Tests\Unit;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Session\Store;
+
 use GlaivePro\Invytr\Http\Middleware;
 use GlaivePro\Invytr\Tests\TestCase;
 
@@ -8,11 +12,32 @@ class MiddlewareTest extends TestCase
 {
     public function testHandle()
     {     
-        $request = new \Illuminate\Http\Request();
+        $responseMock = \Mockery::mock(Response::class);
+        $responseMock->shouldReceive([
+                'status' => 200,
+                'works' => 'works'
+            ])
+            ->once();
 
-        $middleware = new Middleware();        
+        $sessionMock = \Mockery::mock(Store::class);
+        $sessionMock->shouldReceive([
+                'has' => true,
+                'forget' => true
+            ])
+            ->once();
 
-        $result = $middleware->handle($request, function(){ return 'works';});
-        $this->assertEquals('works', $result);
+        $requestMock = \Mockery::mock(Request::class);
+        $requestMock->shouldReceive([
+                'session' => $sessionMock,
+                'status' => 200
+            ]);
+
+        $middleware = new Middleware();    
+
+        $result = $middleware->handle($requestMock, function() use ($responseMock) {
+            return $responseMock;
+        });
+
+        $this->assertEquals('works', $result->works());
     }
 }
