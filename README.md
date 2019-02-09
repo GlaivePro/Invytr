@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/GlaivePro/Invytr.svg?branch=master)](https://travis-ci.org/GlaivePro/Invytr)
 
-Laravel package for sending invitations allowing new users to set their password.
+When making a website where users are created instead of registering themselves, you are faced with the challenge of safely giving users the access to their newly created accounts. Invytr solves this task by sending an email with a link that will enable user to set a password for the acconut.
 
-This package is mainly intended to be used together with Laravel's auth scaffolding. It adds the ability to email new and existing users  a link to a page which will allow user to set up their password.
+This package is mainly intended to be used together with Laravel's auth scaffolding and password resetting mechanism.
 
 ## Usage
 
