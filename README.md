@@ -112,13 +112,14 @@ See [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## TODO
 
+Add a trait that sets a random password and sends an invite when creating a new user.
+
 Improve testing,
 - Thoroughly cover Invytr, Controller, Middleware with unit tests
 - Unit test the URL made in the notification
 - Create more feature tests. For the pw setting page.
 
 Improve code quality and consistency:
-- remove unused stuff that's already commented out
 - fix docblocks
 - imports vs fully qualified class names
 - sort the imports
