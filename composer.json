@@ -1,7 +1,7 @@
 {
     "name": "glaivepro/invytr",
     "type": "library",
-    "description": "The Laravel package for inviting users",
+    "description": "Laravel package for inviting users",
     "keywords": [
         "Laravel"
     ],
