@@ -9,25 +9,7 @@ use GlaivePro\Invytr\Notifications\SetPassword;
 //use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 
 class Invytr
-{   
-    /**
-     * The password token repository.
-     *
-     * @var \Illuminate\Auth\Passwords\TokenRepositoryInterface
-     */
-    //protected $tokens;
-
-    /**
-     * Create a new invytr instance.
-     *
-     * @param  \Illuminate\Auth\Passwords\TokenRepositoryInterface  $tokens
-     * @return void
-     */
-    public function __construct()  //TokenRepositoryInterface $tokens
-    {
-        //$this->tokens = $tokens;
-    }
-
+{
     /**
      * Send a set link to the given user.
      *

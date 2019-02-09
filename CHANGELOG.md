@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+No changes, just some cleanup.
+
 ## 1.0.1
 
 ### Fixed

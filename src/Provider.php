@@ -18,10 +18,6 @@ class Provider extends ServiceProvider
 
         $router = $this->app['router'];
         $router->pushMiddlewareToGroup('web', Middleware::class);
-
-		// $this->publishes([
-		// 		__DIR__.'/config.php' => config_path('invytr.php'),
-		// ], 'config');
     }
 
     /**
