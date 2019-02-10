@@ -114,6 +114,8 @@ See [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 Add a trait that sets a random password and sends an invite when creating a new user.
 
+Try to set expiration by tinkering with `created_at` when making a token instead of how it's done now.
+
 Improve testing,
 - Thoroughly cover Invytr, Controller, Middleware with unit tests
 - Unit test the URL made in the notification
