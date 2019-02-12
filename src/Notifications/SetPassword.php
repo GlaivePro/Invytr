@@ -56,16 +56,21 @@ class SetPassword extends Notification
         }
 
         $email = '';
-        if(is_string($notifiable))
+        if (is_string($notifiable)) {
             $email = $notifiable;
+        }
 
-        if(is_object($notifiable) && isset($notifiable->email))
+        if (is_object($notifiable) && isset($notifiable->email)) {
             $email = $notifiable->email;
+        }
 
         return (new MailMessage)
             ->subject(__('Account created'))
             ->line(__('An account for you has been created! Please set a password for your account!'))
-            ->action(__('Set Password'), url(config('app.url').route('password.set', ['token' => $this->token, 'email' => $email], false) ));
+            ->action(__('Set Password'), url(config('app.url').route('password.set', [
+                'token' => $this->token,
+                'email' => $email,
+            ], false)));
     }
 
     /**

@@ -11,7 +11,7 @@ use GlaivePro\Invytr\Tests\TestCase;
 class MiddlewareTest extends TestCase
 {
     public function testHandle()
-    {     
+    {
         $responseMock = \Mockery::mock(Response::class);
         $responseMock->shouldReceive([
                 'status' => 200,
@@ -32,9 +32,9 @@ class MiddlewareTest extends TestCase
                 'status' => 200
             ]);
 
-        $middleware = new Middleware();    
+        $middleware = new Middleware();
 
-        $result = $middleware->handle($requestMock, function() use ($responseMock) {
+        $result = $middleware->handle($requestMock, function () use ($responseMock) {
             return $responseMock;
         });
 

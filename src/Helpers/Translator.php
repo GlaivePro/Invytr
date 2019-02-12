@@ -2,7 +2,7 @@
 
 namespace GlaivePro\Invytr\Helpers;
 
-class Translator 
+class Translator
 {
     private $passwords = [
         'reset' => 'Your password has been set!',
@@ -14,8 +14,9 @@ class Translator
     {
         $line = 'Set Password';
 
-        if(app('translator')->has('Set Password'))
+        if (app('translator')->has('Set Password')) {
             $line = __('Set Password');
+        }
 
         app('translator')->addLines(['*.Reset Password' => $line], app()->getLocale());
     }
@@ -23,10 +24,11 @@ class Translator
     public function replaceResponseLines()
     {
         foreach ($this->passwords as $key => $string) {
-            if(app('translator')->has($string))
+            if (app('translator')->has($string)) {
                 $string = __($string);
+            }
 
-            app('translator')->addLines(['passwords.'.$key => $string], app()->getLocale());
+            app('translator')->addLines(["passwords.$key" => $string], app()->getLocale());
         }
     }
 }

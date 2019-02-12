@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Notification;
 class InvytrTest extends TestCase
 {
     /**
-    * Setup the test environment.
-    */
+     * Setup the test environment.
+     */
     protected function setUp()
     {
         parent::setUp();
@@ -33,8 +33,6 @@ class InvytrTest extends TestCase
         \Invytr::invite($user);
 
         // Assert a notification was sent to the given users...
-        Notification::assertSentTo(
-            $user, SetPassword::class
-        );
+        Notification::assertSentTo($user, SetPassword::class);
     }
 }
