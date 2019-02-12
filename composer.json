@@ -35,13 +35,13 @@
         }
     },
     "extra": {
-		"laravel": {
-			"providers": [
-				"GlaivePro\\Invytr\\Provider"
-			],
+        "laravel": {
+            "providers": [
+                "GlaivePro\\Invytr\\Provider"
+            ],
             "aliases": {
                 "Invytr": "GlaivePro\\Invytr\\Facades\\Invytr"
             }
-		}
+        }
     }
 }
