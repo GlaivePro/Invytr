@@ -14,17 +14,17 @@ use Illuminate\Foundation\Auth\User;
 
 class InvytrTest extends TestCase
 {
-    protected $broker; 
+    protected $broker;
     protected $user;
 
-    public function setUp() 
+    public function setUp()
     {
         parent::setUp();
 
         $this->broker = $this->getMockBuilder(PasswordBroker::class)
-               ->disableOriginalConstructor()
-               ->setMethods(['deleteToken', 'createToken'])
-               ->getMock();
+            ->disableOriginalConstructor()
+            ->setMethods(['deleteToken', 'createToken'])
+            ->getMock();
 
         Password::shouldReceive('broker')
             ->withNoArgs()
@@ -32,14 +32,12 @@ class InvytrTest extends TestCase
             ->andReturn($this->broker);
 
         $this->user = $this->getMockBuilder(User::class)
-           ->disableOriginalConstructor()
-           ->setMethods(null)
-           ->getMock();
-
-
+            ->disableOriginalConstructor()
+            ->setMethods(null)
+            ->getMock();
     }
 
-    public function tearDown() 
+    public function tearDown()
     {
         \Mockery::close();
 
@@ -47,26 +45,26 @@ class InvytrTest extends TestCase
     }
 
     /**
-     * Check that the revoke intitation method works 
+     * Check that the revoke intitation method works
      * @return void
      */
-    public function testRevokeInvitation() 
+    public function testRevokeInvitation()
     {
         $this->broker->expects($this->once())
-                 ->method('deleteToken')
-                 ->with($this->equalTo($this->user));
+            ->method('deleteToken')
+            ->with($this->equalTo($this->user));
 
         Invytr::revokeInvitation($this->user);
     }
 
-    public function testInvite() 
+    public function testInvite()
     {
         $token = '5349y539457937845';
 
         $this->broker->expects($this->once())
-             ->method('createToken')
-             ->with($this->equalTo($this->user))
-             ->will($this->returnValue($token));
+            ->method('createToken')
+            ->with($this->equalTo($this->user))
+            ->will($this->returnValue($token));
 
         $setPasswordMock = \Mockery::mock('overload:SetPassword');
         $setPasswordMock->shouldReceive('__construct')
@@ -86,23 +84,23 @@ class InvytrTest extends TestCase
         $this->assertTrue($response);
     }
 
-    public function testInviteCustomUser() 
+    public function testInviteCustomUser()
     {
         $token = '5349y539457937845';
 
         $user = $this->getMockBuilder(User::class)
-           ->disableOriginalConstructor()
-           ->setMethods(['sendPasswordSetNotification'])
-           ->getMock();
+            ->disableOriginalConstructor()
+            ->setMethods(['sendPasswordSetNotification'])
+            ->getMock();
 
         $this->broker->expects($this->once())
-             ->method('createToken')
-             ->with($this->equalTo($user))
-             ->will($this->returnValue($token));
+            ->method('createToken')
+            ->with($this->equalTo($user))
+            ->will($this->returnValue($token));
 
         $user->expects($this->once())
-             ->method('sendPasswordSetNotification')
-             ->with($token);
+            ->method('sendPasswordSetNotification')
+            ->with($token);
 
         $response = Invytr::invite($user);
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace GlaivePro\Invytr\Http;
-    
+
 use Illuminate\Http\Request;
 use GlaivePro\Invytr\Helpers\Translator;
 
@@ -18,13 +18,19 @@ class Controller
     {
         $request->session()->put('invytr', true);
 
-        if(\View::exists('auth.passwords.set')) {
-            return \View::make('auth.passwords.set', ['token' => $token, 'email' => $request->email]);
+        if (\View::exists('auth.passwords.set')) {
+            return \View::make('auth.passwords.set', [
+                'token' => $token,
+                'email' => $request->email,
+            ]);
         }
 
         $translator = new Translator();
         $translator->replaceFormLines();
 
-        return \View::make('auth.passwords.reset', ['token' => $token, 'email' => $request->email]);
+        return \View::make('auth.passwords.reset', [
+            'token' => $token,
+            'email' => $request->email,
+        ]);
     }
 }
