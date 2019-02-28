@@ -37,7 +37,7 @@ class InvytrTest extends TestCase
             ->getMock();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         \Mockery::close();
 
