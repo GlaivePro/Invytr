@@ -65,9 +65,9 @@ Responses to setting attempts uses these strings:
 
 ### Email
 
-Similar to Laravel's reset password functionality, you can create a `sendPasswordResetNotification` method on your user model.
+Similar to Laravel's reset password functionality, you can create a `sendPasswordSetNotification` method on your user model.
 ```php
-public function sendPasswordResetNotification($token)
+public function sendPasswordSetNotification($token)
 {
 	// By default we send this:
 	\Notification::send($this, new \GlaivePro\Invytr\Notifications\SetPassword($token));
