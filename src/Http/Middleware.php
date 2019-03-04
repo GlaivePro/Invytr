@@ -4,6 +4,8 @@ namespace GlaivePro\Invytr\Http;
 
 use Closure;
 use GlaivePro\Invytr\Helpers\Translator;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class Middleware
@@ -37,6 +39,18 @@ class Middleware
             // In case of redirect after the setting we have to remember to fix language strings again
             if (302 == $response->status()) {
                 $request->session()->put('invytr_done', true);
+            }
+            
+            /** @var User $user */
+            $user = auth()->user();
+            
+            // If the user needs email verification, password setting
+            // is enough to consider the email as verified, since they
+            // got the password set URL via email.
+            if ($user && $user instanceof MustVerifyEmail) {
+                $user->forceFill([
+                    'email_verified_at' => $user->freshTimestamp(),
+                ])->save();
             }
         }
         
