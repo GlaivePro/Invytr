@@ -4,6 +4,7 @@ namespace GlaivePro\Invytr\Http;
 
 use Closure;
 use GlaivePro\Invytr\Helpers\Translator;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
