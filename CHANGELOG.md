@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+### Added
+- Mark user's email verified after setting password.
+
 ## 1.0.3
 
 No changes, just some cleanup.
