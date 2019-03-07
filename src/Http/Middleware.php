@@ -47,10 +47,10 @@ class Middleware
             // If the user needs email verification, password setting
             // is enough to consider the email as verified, since they
             // got the password set URL via email.
-            if ($user && $user instanceof MustVerifyEmail) {
-                $user->forceFill([
-                    'email_verified_at' => $user->freshTimestamp(),
-                ])->save();
+            if ($user && $user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+                if ($user->markEmailAsVerified()) {
+                    event(new Verified($request->user()));
+                }
             }
         }
         
