@@ -25,8 +25,7 @@ class Controller
             ]);
         }
 
-        $translator = new Translator();
-        $translator->replaceFormLines();
+        (new Translator())->replaceFormLines();
 
         return \View::make('auth.passwords.reset', [
             'token' => $token,
