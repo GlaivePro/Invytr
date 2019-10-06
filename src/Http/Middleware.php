@@ -74,7 +74,6 @@ class Middleware
     
     protected function replaceLanguageStrings()
     {
-        $translator = new Translator();
-        $translator->replaceResponseLines();
+        (new Translator())->replaceResponseLines();
     }
 }
