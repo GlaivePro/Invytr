@@ -9,12 +9,6 @@ matrix:
       env: LARAVEL_VERSION=6.0.*
     - php: 7.4
       env: LARAVEL_VERSION=6.0.*
-    - php: 7.2
-      env: LARAVEL_VERSION=7.*.*
-    - php: 7.3
-      env: LARAVEL_VERSION=7.*.*
-    - php: 7.4
-      env: LARAVEL_VERSION=7.*.*
 
 before_install:
   - composer require "laravel/framework:${LARAVEL_VERSION}" --no-update
