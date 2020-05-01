@@ -3,6 +3,7 @@ namespace GlaivePro\Invytr\Tests;
 
 use GlaivePro\Invytr\Facades\Invytr;
 use GlaivePro\Invytr\Provider;
+use Laravel\Ui\UiServiceProvider;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -15,7 +16,7 @@ abstract class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app)
     {
-        return [Provider::class];
+        return [Provider::class, UiServiceProvider::class];
     }
 
     /**
