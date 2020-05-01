@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.6
+
+### Updated
+- Now tested on PHP 7.4.
+
+## 1.0.5
+
+### Updated
+- Package to support Laravel 6.0.
+
 ## 1.0.4
 
 ### Added
