@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.9
+
+### Updated
+- Package to support Laravel 9.
+
+## 1.0.8
+
+### Updated
+- Package to support Laravel 8.
+
 ## 1.0.7
 
 ### Updated
