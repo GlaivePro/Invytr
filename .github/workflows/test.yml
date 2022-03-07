@@ -1,0 +1,32 @@
+name: Run tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    name: Test on ${{matrix.php}}
+
+    strategy:
+      matrix:
+        php: [8.0, 8.1]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{matrix.php}}
+
+      - name: Install deps
+        run: composer update --no-interaction
+
+      - name: Run tests
+        run: vendor/bin/phpunit --testdox --coverage-text
