@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.10
+
+### Updated
+- Package to support Laravel 10 and PHP 8.2.
+
 ## 1.0.9
 
 ### Updated
