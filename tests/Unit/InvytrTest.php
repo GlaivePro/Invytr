@@ -23,7 +23,7 @@ class InvytrTest extends TestCase
 
         $this->broker = $this->getMockBuilder(PasswordBroker::class)
             ->disableOriginalConstructor()
-            ->setMethods(['deleteToken', 'createToken'])
+            ->onlyMethods(['deleteToken', 'createToken'])
             ->getMock();
 
         Password::shouldReceive('broker')
@@ -33,7 +33,6 @@ class InvytrTest extends TestCase
 
         $this->user = $this->getMockBuilder(User::class)
             ->disableOriginalConstructor()
-            ->setMethods(null)
             ->getMock();
     }
 
@@ -90,7 +89,7 @@ class InvytrTest extends TestCase
 
         $user = $this->getMockBuilder(User::class)
             ->disableOriginalConstructor()
-            ->setMethods(['sendPasswordSetNotification'])
+            ->addMethods(['sendPasswordSetNotification'])
             ->getMock();
 
         $this->broker->expects($this->once())
