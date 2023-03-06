@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    name: Test-PHP${{matrix.php}}-L{{matrix.laravel}}
+    name: Test-PHP${{matrix.php}}-L${{matrix.laravel}}
 
     strategy:
      matrix:
