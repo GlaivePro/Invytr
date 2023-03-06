@@ -22,12 +22,12 @@
         }
     ],
     "require": {
-        "laravel/framework": "^9.0",
+        "laravel/framework": "^9.0|^10.0",
         "laravel/ui": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.4|^9.0",
-        "orchestra/testbench": "^7.0"
+        "phpunit/phpunit": "^8.4|^9.0|^10.0",
+        "orchestra/testbench": "^7.0|^8.0"
     },
     "autoload": {
         "psr-4": {

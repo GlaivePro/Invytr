@@ -13,8 +13,17 @@ jobs:
     name: Test on ${{matrix.php}}
 
     strategy:
-      matrix:
+     matrix:
         php: [8.0, 8.1, 8.2]
+        laravel: [10.*, 9.*]
+        include:
+          - laravel: 10.*
+            testbench: ^8.0
+          - laravel: 9.*
+            testbench: ^7.0
+        exclude:
+          - laravel: 10.*
+            php: 8.0
 
     steps:
       - name: Checkout code
@@ -26,7 +35,9 @@ jobs:
           php-version: ${{matrix.php}}
 
       - name: Install deps
-        run: composer update --no-interaction
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer update --no-interaction
 
       - name: Run tests
         run: vendor/bin/phpunit --testdox --coverage-text
