@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.11
+
+### Updated
+- Package to support Laravel 11 & 12, and PHP 8.3 & 8.4.
+
 ## 1.0.10
 
 ### Updated
