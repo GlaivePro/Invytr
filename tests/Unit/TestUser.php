@@ -1,4 +1,5 @@
 <?php
+
 namespace GlaivePro\Invytr\Tests\Unit;
 
 use Illuminate\Foundation\Auth\User;
