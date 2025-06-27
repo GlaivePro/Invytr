@@ -63,7 +63,7 @@ class InvytrTest extends TestCase
         $this->broker->expects($this->once())
             ->method('createToken')
             ->with($this->equalTo($this->user))
-            ->will($this->returnValue($token));
+            ->willReturn($token);
 
         $setPasswordMock = \Mockery::mock('overload:SetPassword');
         $setPasswordMock->shouldReceive('__construct')
@@ -87,15 +87,14 @@ class InvytrTest extends TestCase
     {
         $token = '5349y539457937845';
 
-        $user = $this->getMockBuilder(User::class)
+        $user = $this->getMockBuilder(TestUser::class)
             ->disableOriginalConstructor()
-            ->addMethods(['sendPasswordSetNotification'])
             ->getMock();
 
         $this->broker->expects($this->once())
             ->method('createToken')
             ->with($this->equalTo($user))
-            ->will($this->returnValue($token));
+            ->willReturn($token);
 
         $user->expects($this->once())
             ->method('sendPasswordSetNotification')

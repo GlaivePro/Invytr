@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticProperties="false"
-         colors="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         cacheDirectory=".phpunit.cache"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd">
+<phpunit
+    bootstrap="vendor/autoload.php"
+    backupGlobals="false"
+    backupStaticProperties="false"
+    colors="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+    displayDetailsOnTestsThatTriggerErrors="true"
+    displayDetailsOnTestsThatTriggerNotices="true"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    cacheDirectory=".phpunit.cache"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+>
     <testsuites>
         <testsuite name="Invytr tests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <coverage>
+    <source>
         <include>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">src</directory>
         </include>
-    </coverage>
+    </source>
     <php>
         <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
         <env name="DB_CONNECTION" value="testing"/>
